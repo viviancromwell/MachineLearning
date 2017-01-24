@@ -27,6 +27,15 @@ sigma = zeros(1, size(X, 2));
 %       
 
 
+mu = mean(X);
+sigma = std(X);
+
+indiciesLength = 1:size(X,2);
+
+for i = indicesLength,
+    XminusMu = X(:, i) - mu(i);
+    X_norm(:,i) = XminusMu / sigma(i);
+end
 
 
 
