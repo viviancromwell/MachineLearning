@@ -90,8 +90,20 @@ Theta2_grad = 1 / m * (delta3' * a2);
                        
 % implement regularization
                        
+[a b] = size(Theta1);
+reg1 = sum(sum(Theta1(:, 2:b) .* Theta1(:, 2:b)));
+                       
+[c d] = size(Theta2);
+heta2_no_bias = Theta2(:, 2:b);
+reg2 = sum(sum(Theta2(:, 2:b) .* Theta2(:, 2:b)));
+                       
+J = [J + lambda/2 * [reg1 + reg2]]/m;
+                       
                        
 
+                       
+% Unroll gradients
+grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
 
 
