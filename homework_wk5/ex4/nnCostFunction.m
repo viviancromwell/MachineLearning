@@ -77,35 +77,33 @@ a3 = sigmoid(z3);
 
 % calculate cost function
 
-J = sum (sum(y_matrix .* log(a3) + (1-y_matrix) .* log(1-a3)));
+J = sum (sum(-(y_matrix .* log(a3)) - (1-y_matrix) .* log(1-a3)));
+
 
 % backpropagation
 
 delta3 = a3 - y_matrix;
 delta2 = delta3 * Theta2(:, 2:end) .* sigmoidGradient(z2);
 
-Theta1_grad = 1 / m * (delta2' * a1);
-Theta2_grad = 1 / m * (delta3' * a2);
-                       
-                       
-% implement regularization
-                       
+Theta1_grad = (1/m) * (delta2' * a1);
+Theta2_grad = (1/m) * (delta3' * a2);
+
+                      
+                                              
+ % implement regularization
+                                              
 [a b] = size(Theta1);
 reg1 = sum(sum(Theta1(:, 2:b) .* Theta1(:, 2:b)));
-                       
 [c d] = size(Theta2);
 reg2 = sum(sum(Theta2(:, 2:d) .* Theta2(:, 2:d)));
-                       
+                                              
 J = [J + lambda/2 * [reg1 + reg2]]/m;
-                       
- Theta1(:,1) = 0;
- Theta2(:,1) = 0;
-                       
+                                              
+Theta1(:,1) = 0;
+Theta2(:,1) = 0;
+                                              
 Theta1_grad = Theta1_grad + lambda/m * Theta1;
 Theta2_grad = Theta2_grad + lambda/m * Theta2;
-
-
-
 
 
 % -------------------------------------------------------------
@@ -114,6 +112,5 @@ Theta2_grad = Theta2_grad + lambda/m * Theta2;
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
-
 
 end
