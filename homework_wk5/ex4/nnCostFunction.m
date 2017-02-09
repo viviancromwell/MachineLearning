@@ -62,6 +62,11 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% make a y metrix
+
+y_metrix = eye(num_labels)(y,:);
+
+% Feedforward and return cost varialable
 
 
 
