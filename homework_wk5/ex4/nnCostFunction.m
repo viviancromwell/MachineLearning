@@ -65,7 +65,7 @@ Theta2_grad = zeros(size(Theta2));
 
 y_matrix = eye(num_labels)(y,:);
 
-%forward propagation
+%feedforward propagation
 
 a1 = [ones(m, 1) X];
 z2 = a1 * Theta1';
@@ -78,6 +78,17 @@ a3 = sigmoid(z3);
 % calculate cost function
 
 J = sum (sum(y_matrix .* log(a3) + (1-y_matrix) .* log(1-a3)));
+
+%backpropagation
+
+delta3 = a3 - y_matrix;
+delta2 = delta3 * Theta2(:, 2:end) .* sigmoidGradient(z2);
+
+Theta1_grad = 1 / m * (delta2' * a1);
+Theta2_grad = 1 / m * (delta3' * a2);
+
+
+
 
 
 
