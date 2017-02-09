@@ -94,32 +94,15 @@ Theta2_grad = 1 / m * (delta3' * a2);
 reg1 = sum(sum(Theta1(:, 2:b) .* Theta1(:, 2:b)));
                        
 [c d] = size(Theta2);
-heta2_no_bias = Theta2(:, 2:b);
-reg2 = sum(sum(Theta2(:, 2:b) .* Theta2(:, 2:b)));
+reg2 = sum(sum(Theta2(:, 2:d) .* Theta2(:, 2:d)));
                        
 J = [J + lambda/2 * [reg1 + reg2]]/m;
                        
+ Theta1(:,1) = 0;
+ Theta2(:,1) = 0;
                        
-
-                       
-% Unroll gradients
-grad = [Theta1_grad(:) ; Theta2_grad(:)];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Theta1_grad = Theta1_grad + lambda/m * Theta1;
+Theta2_grad = Theta2_grad + lambda/m * Theta2;
 
 
 
