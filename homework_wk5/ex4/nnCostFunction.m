@@ -62,11 +62,23 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
-% make a y metrix
 
-y_metrix = eye(num_labels)(y,:);
+y_matrix = eye(num_labels)(y,:);
 
-% Feedforward and return cost varialable
+%forward propagation
+
+a1 = [ones(m, 1) X];
+z2 = a1 * Theta1';
+a2 = sigmoid(z2);
+
+a2 = [ones(m,1) a2];
+z3 = a2 * Theta2';
+a3 = sigmoid(z3);
+
+% calculate cost function
+
+J = sum (sum(y_matrix .* log(a3) + (1-y_matrix) .* log(1-a3)));
+
 
 
 
