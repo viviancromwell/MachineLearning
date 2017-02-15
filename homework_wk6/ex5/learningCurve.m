@@ -66,7 +66,7 @@ y_theta = y(1:i);
     error_val(i) = linearRegCostFunction(Xval, yval, theta, 0);
 
 
-
+end
 
 
 % -------------------------------------------------------------
