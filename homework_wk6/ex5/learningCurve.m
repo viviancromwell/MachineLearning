@@ -57,8 +57,8 @@ error_val   = zeros(m, 1);
 
 for i = 1:m
 
-x_theta = X(1:i, ;);
-y_theta = Y(1:i);
+x_theta = X(1:i, :);
+y_theta = y(1:i);
 
     [theta] = trainLinearReg(x_theta, y_theta, lambda);
 
