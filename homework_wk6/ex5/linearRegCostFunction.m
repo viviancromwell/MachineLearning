@@ -25,7 +25,11 @@ n = size(theta);
 
 z = X * theta;
 theta_no_1 = theta(2:n,:);
+
+J = 0.5 / m * (z -  y)' * (z - y);
+
 J = J + lambda * 0.5 / m * theta_no_1' * theta_no_1;
+
 grad_reg = zeros(size(theta));
 grad_reg(2:n,:) = 1/m * lambda * theta_no_1;
            
