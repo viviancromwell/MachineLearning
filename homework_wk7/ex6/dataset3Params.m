@@ -31,11 +31,19 @@ for i = 1:param_length
     for j = 1:param_length
     model = svmTrain (X, y, multiplicative_values(i), @(x1, x2) gaussianKernel(x1, x2, multiplicative_values(j)));
 
-    predictions = svmPredict(model, Xval);
+        predictions = svmPredict(model, Xval);
 
+        new_pred_error = mean(double(predictions ~= yval));
 
-    
+        if (new_pred_error < prediction_error)
 
+            prediction_error = new_pred_error;
+
+            C = multiplicative_values(i);
+            sigma = multiplicative_values(j);
+        end
+    end
+end
 
 
 
