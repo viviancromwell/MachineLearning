@@ -35,7 +35,7 @@ for i = 1:param_length
 
         new_pred_error = mean(double(predictions ~= yval));
 
-        if (new_pred_error < prediction_error)
+        if (new_pred_error < 10 ^ 6)
 
             prediction_error = new_pred_error;
 
