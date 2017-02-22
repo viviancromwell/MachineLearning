@@ -23,6 +23,18 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+multiplicative_values = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30];
+
+param_length = length(multiplicative_values);
+
+for i = 1:param_length
+    for j = 1:param_length
+    model = svmTrain (X, y, multiplicative_values(i), @(x1, x2) gaussianKernel(x1, x2, multiplicative_values(j)));
+
+    predictions = svmPredict(model, Xval);
+
+
+    
 
 
 
