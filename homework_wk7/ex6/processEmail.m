@@ -99,7 +99,7 @@ while ~isempty(email_contents)
 
     index = 0;
     for i = 1:length(vocabList)
-        if (strcmp(vocabList{i), str) == 1;
+if (strcmp(vocabList{i}, str) == 1;
             index = i;
             break;
             
