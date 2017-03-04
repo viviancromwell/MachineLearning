@@ -27,6 +27,17 @@ centroids = zeros(K, n);
 %
 
 
+for k = 1:K
+    total = zeros(1, n);
+    z = 0;
+    for i = 1:m
+        if (idx(i) == k)
+            total = total + X(i, :);
+            z = z + 1;
+        end
+    end
+    centroids(k, :) = total ./ z;
+end
 
 
 
