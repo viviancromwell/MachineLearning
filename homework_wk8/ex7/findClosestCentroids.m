@@ -21,7 +21,24 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+x_size - size(X,1);
 
+for i = 1:x_size
+    idx(i) = 1;
+    dist_1 = dist(centroid(1,:), X(i, :));
+
+
+    for j = 2:k
+        dist_2 = dist([centroid(j,:), X(i, :));
+                   
+                if (dist_2 < dist_1)
+                       dist_1 = dist_2;
+                idx(i) = j;
+                end
+                   
+    end
+end
+               
 
 
 
@@ -29,5 +46,10 @@ idx = zeros(size(X,1), 1);
 
 % =============================================================
 
+end
+
+function d = dist(x, y)
+    diff = x - y;
+                       d = sum(diff .^ 2);
 end
 
