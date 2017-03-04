@@ -21,15 +21,15 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-x_size - size(X,1);
+x_size = size(X,1);
 
 for i = 1:x_size
     idx(i) = 1;
-    dist_1 = dist(centroid(1,:), X(i, :));
+    dist_1 = dist(centroids(1,:), X(i,:));
 
 
-    for j = 2:k
-        dist_2 = dist([centroid(j,:), X(i, :));
+    for j = 2:K
+        dist_2 = dist(centroids(j,:), X(i,:));
                    
                 if (dist_2 < dist_1)
                        dist_1 = dist_2;
