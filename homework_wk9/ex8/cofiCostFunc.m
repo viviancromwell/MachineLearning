@@ -45,7 +45,7 @@ Theta_grad = zeros(size(Theta));
 
 prediction = X * Theta';
 r = (prediction - Y) .* R;
-J = sum(sum(r .^ 2)) + lambda * (sum(sum(Theta .^ 2))/2 + sum(sum(X .^ 2)) )/2;
+J = 0.5 * sum(sum(r .^ 2)) + 0.5 * lambda * ( sum(sum(Theta .^ 2)) + sum(sum(X .^ 2)) );
 X_grad = r * Theta + lambda * X;
 Theta_grad = r' * X + lambda * Theta;
 
