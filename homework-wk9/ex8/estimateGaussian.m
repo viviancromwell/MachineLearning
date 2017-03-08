@@ -23,7 +23,13 @@ sigma2 = zeros(n, 1);
 
 
 
+mu = mean(X);
 
+for i=1:n
+    feature_val = X(:, i);
+    r = feature_val- mu(i);
+    sigma2(i) = (sum(r .^ 2))/m;
+end
 
 
 
